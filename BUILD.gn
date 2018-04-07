@@ -1,0 +1,42 @@
+##-----------------------------------------------------------------------------##
+## BUILD.gn                                                                    ##
+##                                                                             ##
+## This file is distributed under the MIT License. See LICENSE.txt for details.##
+## Copyright (C) Tran Tuan Nghia <trantuannghia95@gmail.com> 2018              ##
+##-----------------------------------------------------------------------------##
+
+config("libclang_config") {
+  if (is_win) {
+    folder = ""
+    if (target_cpu == "x86") {
+      folder = "win32"
+    } 
+
+    if (target_cpu == "x64") {
+      folder = "win64"
+    }
+
+    libs = [ "$folder/lib/libclang.lib" ]
+
+    include_dirs = [ "include" ]
+  }
+
+  if (is_linux) {
+    libclang_path = exec_script("find_libclang.py", [target_cpu], "scope")
+    include_dirs = [ libclang_path.include_dir ]
+    libs = [ libclang_path.lib ]
+  }
+}
+
+if (is_win) {
+  copy("copy_libclang_dll") {
+    if (target_cpu == "x86") {
+      sources = [ "win32/bin/libclang.dll" ]
+    } 
+    
+    if (target_cpu == "x64") {
+      sources = [ "win64/bin/libclang.dll" ]
+    }
+    outputs = [ "$root_out_dir/libclang.dll" ]
+  }
+}

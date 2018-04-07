@@ -1,0 +1,4 @@
+win32/bin/libclang.dll filter=lfs diff=lfs merge=lfs -text
+win32/lib/libclang.lib filter=lfs diff=lfs merge=lfs -text
+win64/bin/libclang.dll filter=lfs diff=lfs merge=lfs -text
+win64/lib/libclang.lib filter=lfs diff=lfs merge=lfs -text

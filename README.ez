@@ -1,0 +1,9 @@
+Name: libclang
+URL: https://clang.llvm.org/
+Version: v6.0.0
+License: University of Illinois/NCSA Open Source License
+Description: C Interface to Clang
+
+Changes:
+- Only keep windows binaries, and include
+- Add BUILD.gn
