@@ -1,0 +1,6 @@
+CHECKSUMS
+__pycache__
+include/
+*.tar.xz
+win32/
+win64/
